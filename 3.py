@@ -25,17 +25,17 @@ def part2(datas, mode, i):
     for line in datas:
         curr_bit = line[i]
         column.append(curr_bit)
-    if(mode == "oxygen") :
-        bit_criteria = "1"
+        #oxygen mode
+        bit_criteria = 1
         if(column.count("0") > column.count("1")):
-            bit_criteria = "0"
-    else :
-        bit_criteria = "0"
-        if(column.count("0") > column.count("1")):
-            bit_criteria = "1"
+            bit_criteria = 0
+        #co2 mode
+        if(mode == "co2") :
+                bit_criteria = ~bit_criteria + 2 #invert bit
+
     new_datas = []
     for data in datas:
-        if(data[i] == bit_criteria):
+        if(data[i] == str(bit_criteria)):
             new_datas.append(data)
     part2(new_datas, mode, i + 1)   
 
