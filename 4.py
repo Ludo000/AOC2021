@@ -12,11 +12,6 @@ def part1(rand_numbers, bingos):
                     return int(rand_number) * sumUnmarkedNumber(bingo)
 
 def part2(rand_numbers, bingos):
-    #reset
-    for bingo in bingos:
-        for bingo_line in bingo:
-            for bingo_number in bingo_line:
-                bingo_number[1] = False
     for rand_number in rand_numbers:
         won_bingos = []
         for k, bingo in enumerate(bingos):
@@ -102,6 +97,13 @@ def main():
                 bingo.append(bingo_line)
     
     print(part1(rand_numbers,bingos))
+
+    #reset
+    for bingo in bingos:
+        for bingo_line in bingo:
+            for bingo_number in bingo_line:
+                bingo_number[1] = False
+                
     part2(rand_numbers,bingos)
 
 if __name__ == "__main__":
