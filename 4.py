@@ -1,5 +1,3 @@
-from pprint import pprint
-
 def part1(rand_numbers, bingos):
     for rand_number in rand_numbers:
         for bingo in bingos:
@@ -20,7 +18,7 @@ def part2(rand_numbers, bingos):
                 for bingo_number in bingo_line:
                     if(bingo_number[0] == rand_number):
                         bingo_number[1] = True
-                        win = checkWin(bingos.copy())
+                        win = checkWin(bingos)
                         if(win):
                             print("Found win in : ")
                             print("rand_number: ", rand_number)
@@ -28,7 +26,6 @@ def part2(rand_numbers, bingos):
                             bingos.remove(bingo)
                             part2(rand_numbers, bingos)
             
-
 def checkWin(bingos):
     #check line
     for bingo in bingos:
@@ -38,8 +35,6 @@ def checkWin(bingos):
                 if(bingo_number[1] == False):
                     win = False
             if(win):
-                print("Win line :")
-                pprint(bingo_line)
                 return True
     #check column
     for j in range (0,5):
@@ -51,17 +46,8 @@ def checkWin(bingos):
                 if(bingo_line[j][1] == False):
                     win = False
             if(win):
-                print("Win column:")
-                pprint(column)
                 return True
     
-
-
-
-
-        
-            
-
 def sumUnmarkedNumber(bingo):
     count = 0
     for bingo_line in bingo:
@@ -70,9 +56,6 @@ def sumUnmarkedNumber(bingo):
                 count += int(bingo_number[0])
     print("sumUnmarkedNumber: ", count)
     return count
-
-
-
 
 def main():
     f = open("input4.txt", "r")
